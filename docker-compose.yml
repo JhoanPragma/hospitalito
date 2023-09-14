@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  gateway:
+    build: ./gateway
+    ports:
+      - 3000:3000
+  medical-history:
+    build: medical-history
+  patient-registation:
+    build: patient-registation
+  pharmacy:
+    build: pharmacy
+  prescription:
+    build: prescription
