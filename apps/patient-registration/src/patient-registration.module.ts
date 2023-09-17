@@ -7,7 +7,6 @@ import { ParametricsModule } from './components/parametrics/parametrics.module';
 
 @Module({
   imports: [
-    PatientsModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -20,6 +19,7 @@ import { ParametricsModule } from './components/parametrics/parametrics.module';
       synchronize: true,
     }),
     ParametricsModule,
+    PatientsModule,
   ],
   controllers: [PatientRegistrationController],
   providers: [PatientRegistrationService],

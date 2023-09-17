@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { MedicalHistoryController } from './medical-history.controller';
 import { MedicalHistoryService } from './medical-history.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TreatmentsModule } from './components/treatments/treatments.module';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoLoadEntities: true,
       synchronize: true,
     }),
-  ],
+    TreatmentsModule],
   controllers: [MedicalHistoryController],
   providers: [MedicalHistoryService],
 })
