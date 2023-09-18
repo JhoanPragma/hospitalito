@@ -1,14 +1,77 @@
-version: '3.7'
+version: '3'
 services:
   gateway:
-    build: ./gateway
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - "8000:8000"
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres
+      - rabbitmq
+
   medical-history:
-    build: medical-history
-  patient-registation:
-    build: patient-registation
-  pharmacy:
-    build: pharmacy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres
+      - rabbitmq
+
+  patient-registration:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres
+      - rabbitmq
+
   prescription:
-    build: prescription
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres
+      - rabbitmq
+
+  pharmacy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "81:81"
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres
+      - rabbitmq
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: hospitalito_db
+    ports:
+      - "5433:5432"
+    networks:
+          - mynetwork
+
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+          - mynetwork
+networks:
+  mynetwork:
+    driver: bridge

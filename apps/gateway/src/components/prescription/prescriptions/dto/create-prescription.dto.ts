@@ -19,4 +19,8 @@ export class CreatePrescriptionDto {
     @IsNumber()
     @IsNotEmpty()
     treatment: number;
+
+    @IsNumber()
+    @IsNotEmpty()
+    pharmacy: number;
 }

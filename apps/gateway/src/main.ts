@@ -9,10 +9,12 @@ async function bootstrap() {
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ, // Transporte para RabbitMQ
     options: {
-      urls: ['amqp://localhost:5672'], // URL de RabbitMQ
+      urls: ['amqp://rabbitmq:5672'], // URL de RabbitMQ
       queue: 'gateway_queue', // Nombre de la cola
     },
   });
+
+  app.enableCors();
 
   await app.listen(8000);
 }

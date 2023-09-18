@@ -8,7 +8,7 @@ async function bootstrap() {
     {
       transport: Transport.RMQ,
       options: {
-        urls: ['amqp://localhost:5672'], // URL de conexión a RabbitMQ
+        urls: ['amqp://rabbitmq:5672'], // URL de conexión a RabbitMQ
         queue: 'medical_history_queue', // Nombre de la cola
       },
     },

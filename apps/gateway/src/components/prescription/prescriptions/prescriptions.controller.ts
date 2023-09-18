@@ -2,6 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { PrescriptionsService } from './prescriptions.service';
 import { CreatePrescriptionDto } from './dto/create-prescription.dto';
 import { UpdatePrescriptionDto } from './dto/update-prescription.dto';
+import { CreatePrescriptionDispersionDto } from './dto/create-prescription-dispersion.dto';
+import { CreatePharmacyDto } from './dto/create-pharmacy.dto';
 
 @Controller('prescriptions')
 export class PrescriptionsController {
@@ -12,9 +14,14 @@ export class PrescriptionsController {
     return this.prescriptionsService.create(createPrescriptionDto);
   }
 
-  @Get()
-  findAll() {
-    return this.prescriptionsService.findAll();
+  @Post('dispersion')
+  createDispersion(@Body() createPrescriptionDispersionDto: CreatePrescriptionDispersionDto) {
+    return this.prescriptionsService.prescriptionDispersion(createPrescriptionDispersionDto);
+  }
+
+  @Post('create-pharmacy')
+  createPharmacy(@Body() createPharmacyDto: CreatePharmacyDto) {
+    return this.prescriptionsService.createPharmacy(createPharmacyDto);
   }
 
   @Get(':id')

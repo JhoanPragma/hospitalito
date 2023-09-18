@@ -8,7 +8,7 @@ import { PrescriptionsModule } from './components/prescriptions/prescriptions.mo
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'postgres',
       port: 5432,
       username: 'postgres',
       password: '12345678',

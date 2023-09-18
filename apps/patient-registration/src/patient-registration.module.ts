@@ -9,7 +9,7 @@ import { ParametricsModule } from './components/parametrics/parametrics.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'postgres',
       port: 5432,
       username: 'postgres',
       password: '12345678',
