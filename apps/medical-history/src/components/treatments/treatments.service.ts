@@ -1,18 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTreatmentDto } from './dto/create-treatment.dto';
-import { UpdateTreatmentDto } from './dto/update-treatment.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Patient } from './entities/patient.entity';
 import { ResponseService } from '../../commons/response.service';
 import { Treatment } from './entities/treatment.entity';
-import { Prescription } from './entities/prescription.entity';
 
 @Injectable()
 export class TreatmentsService {
   constructor(
-    @InjectRepository(Prescription)
-    private readonly prescriptionRepository: Repository<Prescription>,
     @InjectRepository(Treatment)
     private readonly treatmentRepository: Repository<Treatment>,
     @InjectRepository(Patient)
@@ -36,32 +32,10 @@ export class TreatmentsService {
       patient: patientData,
       prescription: null,
     });
-
-    // if (createTreatmentDto.prescription) {
-    //   const prescriptionData = await this.prescriptionRepository.findOne({ 
-    //     where: {
-    //       id: createTreatmentDto.prescription,
-    //     }
-    //   });
-
-    //   if (!prescriptionData) {
-    //     return this.reponseService.responseError('Prescription Not Found', 404);
-    //   }
-
-    //   treatment.prescription = prescriptionData;
-    // }
   
     const treatmentCreated = await this.treatmentRepository.save(treatment);
 
     return await this.reponseService.responseSuccess(treatmentCreated, 'Treatment Created', 201);
-  }
-
-  findAll() {
-    return `This action returns all treatments`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} treatment`;
   }
 
   async clinicHistory(patientId: number) {
@@ -99,13 +73,5 @@ export class TreatmentsService {
     }
 
     return await this.reponseService.responseSuccess(treatmentData, 'Clinic History Found', 201);
-  }
-
-  update(id: number, updateTreatmentDto: UpdateTreatmentDto) {
-    return `This action updates a #${id} treatment`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} treatment`;
   }
 }

@@ -1,7 +1,7 @@
-import { IsString, IsNotEmpty } from "class-validator";
+import { IsNotEmpty, IsString } from "class-validator";
 import {ApiProperty} from "@nestjs/swagger";
 
-export class CreateAllergyDto {
+export class CreateMedicineDto {
     @ApiProperty()
     @IsString()
     @IsNotEmpty()
@@ -10,5 +10,5 @@ export class CreateAllergyDto {
     @ApiProperty()
     @IsString()
     @IsNotEmpty()
-    description: string;
+    due_date: string;
 }

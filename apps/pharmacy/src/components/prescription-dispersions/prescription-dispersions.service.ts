@@ -62,20 +62,4 @@ export class PrescriptionDispersionsService {
   async createPharmacy(createPharmacyDto: CreatePharmacyDto) {
     return await this.pharmacyRepository.save(createPharmacyDto);
   }
-
-  findAll() {
-    return `This action returns all prescriptionDispersions`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} prescriptionDispersion`;
-  }
-
-  update(id: number, updatePrescriptionDispersionDto: UpdatePrescriptionDispersionDto) {
-    return `This action updates a #${id} prescriptionDispersion`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} prescriptionDispersion`;
-  }
 }

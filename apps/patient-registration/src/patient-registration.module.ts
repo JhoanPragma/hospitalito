@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { PatientRegistrationController } from './patient-registration.controller';
-import { PatientRegistrationService } from './patient-registration.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PatientsModule } from './components/patients/patients.module';
 import { ParametricsModule } from './components/parametrics/parametrics.module';
@@ -21,7 +19,7 @@ import { ParametricsModule } from './components/parametrics/parametrics.module';
     ParametricsModule,
     PatientsModule,
   ],
-  controllers: [PatientRegistrationController],
-  providers: [PatientRegistrationService],
+  controllers: [],
+  providers: [],
 })
 export class PatientRegistrationModule {}

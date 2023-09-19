@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import { PharmacyController } from './pharmacy.controller';
-import { PharmacyService } from './pharmacy.service';
 import { PrescriptionDispersionsModule } from './components/prescription-dispersions/prescription-dispersions.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MedicinesModule } from './components/medicines/medicines.module';
 
 @Module({
   imports: [
@@ -18,8 +17,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: true,
     }),
     PrescriptionDispersionsModule,
+    MedicinesModule,
   ],
-  controllers: [PharmacyController],
-  providers: [PharmacyService],
+  controllers: [],
+  providers: [],
 })
 export class PharmacyModule {}

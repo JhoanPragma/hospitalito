@@ -1,10 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { PrescriptionsService } from './prescriptions.service';
 import { CreatePrescriptionDto } from './dto/create-prescription.dto';
-import { UpdatePrescriptionDto } from './dto/update-prescription.dto';
 import { CreatePrescriptionDispersionDto } from './dto/create-prescription-dispersion.dto';
 import { CreatePharmacyDto } from './dto/create-pharmacy.dto';
+import { CreateMedicineDto } from './dto/create-medicine.dto';
+import {ApiTags} from "@nestjs/swagger";
 
+@ApiTags('prescription')
 @Controller('prescriptions')
 export class PrescriptionsController {
   constructor(private readonly prescriptionsService: PrescriptionsService) {}
@@ -24,18 +26,8 @@ export class PrescriptionsController {
     return this.prescriptionsService.createPharmacy(createPharmacyDto);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.prescriptionsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePrescriptionDto: UpdatePrescriptionDto) {
-    return this.prescriptionsService.update(+id, updatePrescriptionDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.prescriptionsService.remove(+id);
+  @Post('create-medicine')
+  createMedicine(@Body() createMedicineDto: CreateMedicineDto) {
+    return this.prescriptionsService.createMedicine(createMedicineDto);
   }
 }

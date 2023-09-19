@@ -1,14 +1,14 @@
-import { IsString, IsNotEmpty } from "class-validator";
+import { IsString, IsNotEmpty, IsNumber } from "class-validator";
 import {ApiProperty} from "@nestjs/swagger";
 
-export class CreateAllergyDto {
+export class CreateDepartmentDto {
     @ApiProperty()
     @IsString()
     @IsNotEmpty()
     name: string;
 
     @ApiProperty()
-    @IsString()
+    @IsNumber()
     @IsNotEmpty()
-    description: string;
+    country: number;
 }

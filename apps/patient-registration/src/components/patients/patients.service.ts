@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePatientDto } from './dto/create-patient.dto';
-import { UpdatePatientDto } from './dto/update-patient.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { City } from '../parametrics/entities/city.entity';
 import { Repository } from 'typeorm';
@@ -100,17 +99,5 @@ export class PatientsService {
       }
     });
     return await this.reponseService.responseSuccess(patientsFound, 'All Patients Found', 201);
-  }
-
-  async findOne(id: number) {
-    return `This action returns a #${id} patient`;
-  }
-
-  async update(id: number, updatePatientDto: UpdatePatientDto) {
-    return `This action updates a #${id} patient`;
-  }
-
-  async remove(id: number) {
-    return `This action removes a #${id} patient`;
   }
 }

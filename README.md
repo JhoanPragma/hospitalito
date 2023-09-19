@@ -1,3 +1,14 @@
+Run in docker
+docker-compose build
+docker-compose up
+
+Documentation with swagger
+http://localhost:8000/api#/
+
+Connection to socket
+localhost:81
+Event to listen: prescription
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -57,7 +68,6 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-docker run -it -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.12-management
 
 ## Support
 

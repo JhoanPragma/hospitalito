@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { PrescriptionController } from './prescription.controller';
-import { PrescriptionService } from './prescription.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PrescriptionsModule } from './components/prescriptions/prescriptions.module';
 
@@ -19,7 +17,7 @@ import { PrescriptionsModule } from './components/prescriptions/prescriptions.mo
     }),
     PrescriptionsModule,
   ],
-  controllers: [PrescriptionController],
-  providers: [PrescriptionService],
+  controllers: [],
+  providers: [],
 })
 export class PrescriptionModule {}

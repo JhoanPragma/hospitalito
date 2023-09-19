@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePrescriptionDto } from './dto/create-prescription.dto';
-import { UpdatePrescriptionDto } from './dto/update-prescription.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Prescription } from './entities/prescription.entity';
 import { Repository } from 'typeorm';
@@ -60,21 +59,5 @@ export class PrescriptionsService {
     const prescriptionCreated = await this.prescriptionRepository.save(prescription);
 
     return await this.reponseService.responseSuccess(prescriptionCreated, 'Prescription Created', 201);
-  }
-
-  findAll() {
-    return `This action returns all prescriptions`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} prescription`;
-  }
-
-  update(id: number, updatePrescriptionDto: UpdatePrescriptionDto) {
-    return `This action updates a #${id} prescription`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} prescription`;
   }
 }
