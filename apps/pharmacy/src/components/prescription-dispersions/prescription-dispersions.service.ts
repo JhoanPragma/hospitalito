@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePrescriptionDispersionDto } from './dto/create-prescription-dispersion.dto';
-import { UpdatePrescriptionDispersionDto } from './dto/update-prescription-dispersion.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Prescription } from './entities/prescription.entity';
 import { Repository } from 'typeorm';
